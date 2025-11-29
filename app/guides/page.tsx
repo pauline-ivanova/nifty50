@@ -1,22 +1,108 @@
 import { getAllGuides } from '@/lib/guides';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+import JsonLd, { 
+  generateCollectionPageSchema,
+  generateBreadcrumbSchema,
+  generateItemListSchema,
+} from '@/app/components/common/JsonLd';
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://howtoinvestinnifty50.com';
+const guidesPageUrl = `${baseUrl}/guides`;
+
+export const metadata: Metadata = {
+  title: 'Investment Guides - Learn How to Invest in Nifty 50',
+  description: 'Step-by-step guides and tutorials for investing in Nifty 50. Learn how to open a Demat account, compare ETFs, and start your investment journey.',
+  alternates: {
+    canonical: guidesPageUrl,
+    languages: {
+      'en-IN': guidesPageUrl,
+      'x-default': guidesPageUrl,
+    },
+  },
+  openGraph: {
+    title: 'Investment Guides - Learn How to Invest in Nifty 50',
+    description: 'Step-by-step guides and tutorials for investing in Nifty 50. Learn how to open a Demat account, compare ETFs, and start your investment journey.',
+    url: guidesPageUrl,
+    siteName: 'How to Invest in NIFTY 50',
+    locale: 'en_IN',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Investment Guides - Learn How to Invest in Nifty 50',
+    description: 'Step-by-step guides and tutorials for investing in Nifty 50. Learn how to open a Demat account, compare ETFs, and start your investment journey.',
+  },
+  other: {
+    'geo.region': 'IN',
+    'geo.placename': 'India',
+    'geo.position': '20.5937;78.9629',
+    'ICBM': '20.5937, 78.9629',
+  },
+};
 
 const categoryColors: { [key: string]: string } = {
-  'Investing': 'bg-green-100 text-green-800',
-  'Trading': 'bg-blue-100 text-blue-800',
-  'Analysis': 'bg-purple-100 text-purple-800',
-  'Basics': 'bg-yellow-100 text-yellow-800',
+  'Investing': 'bg-blue-100 text-blue-800',
+  'Trading': 'bg-purple-100 text-purple-800',
+  'Analysis': 'bg-indigo-100 text-indigo-800',
+  'Basics': 'bg-green-100 text-green-800',
 };
 
 export default function GuidesPage() {
   const allGuides = getAllGuides();
+  const pageUrl = guidesPageUrl;
+
+  // Generate schemas
+  const schemas = [];
+
+  // Breadcrumb schema
+  const breadcrumbItems = [
+    { name: 'Home', url: baseUrl },
+    { name: 'Guides', url: pageUrl },
+  ];
+  schemas.push(generateBreadcrumbSchema(breadcrumbItems));
+
+  // ItemList schema - List of guides
+  schemas.push(generateItemListSchema({
+    name: 'Investment Guides',
+    description: 'Step-by-step guides and tutorials for Nifty 50 investing',
+    items: allGuides.map(guide => ({
+      name: guide.title || guide.slug,
+      url: `${baseUrl}/guides/${guide.slug}`,
+      description: guide.excerpt,
+      itemType: 'Article',
+    })),
+  }));
+
+  // CollectionPage schema
+  schemas.push(generateCollectionPageSchema({
+    name: 'Investment Guides',
+    description: 'Comprehensive guides for investing in Nifty 50 and Indian stock market',
+    url: pageUrl,
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: allGuides.length,
+      itemListElement: allGuides.map((guide, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        item: {
+          '@type': 'Article',
+          name: guide.title || guide.slug,
+          url: `${baseUrl}/guides/${guide.slug}`,
+        },
+      })),
+    },
+  }));
 
   return (
     <>
+      {schemas.map((schema, index) => (
+        <JsonLd key={index} data={schema} />
+      ))}
       <div className="relative isolate bg-gradient-to-b from-emerald-600 to-emerald-900 py-24 sm:py-32">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(30,27,75,0.4),transparent_50%)]" />
         <div className="relative mx-auto max-w-2xl px-6 text-center lg:px-8">
-            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">Investment Guides</h1>
+            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">Nifty 50 Investment Guides</h1>
             <p className="mt-6 text-lg leading-8 text-emerald-100">
               Master the market with our expert tutorials, strategies, and deep dives into Nifty 50 investing.
             </p>
@@ -30,7 +116,14 @@ export default function GuidesPage() {
               return (
                 <article key={guide.slug} className="flex flex-col items-start self-start">
                   <div className="relative w-full">
-                    <div className="aspect-[16/9] w-full rounded-2xl bg-gray-100 sm:aspect-[2/1] lg:aspect-[3/2]"></div>
+                    <Link href={`/guides/${guide.slug}`}>
+                      <img
+                        src={`/api/og/guide/${guide.slug}`}
+                        alt={guide.title}
+                        className="aspect-[4/3] w-full rounded-2xl object-cover"
+                        loading="lazy"
+                      />
+                    </Link>
                   </div>
                   <div className="max-w-xl">
                     <div className="mt-8 flex items-center gap-x-4 text-sm">
@@ -57,4 +150,5 @@ export default function GuidesPage() {
     </>
   );
 }
+
 

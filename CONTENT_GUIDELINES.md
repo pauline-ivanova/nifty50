@@ -228,7 +228,7 @@
 * внутренние ссылки по кластеру
 * внешние — только на официальные источники
 * Title: 50–60 characters
-* Meta Description: 130–150 characters
+* Meta Description: 120–155 characters (optimal: 150–155 for Google, 120+ for mobile)
 
 ---
 

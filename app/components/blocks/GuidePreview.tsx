@@ -10,10 +10,10 @@ type Post = {
 };
 
 const categoryColors: { [key: string]: string } = {
-  'Investing': 'bg-green-100 text-green-800',
-  'Trading': 'bg-blue-100 text-brand-primary',
-  'Analysis': 'bg-purple-100 text-purple-800',
-  'Basics': 'bg-yellow-100 text-yellow-800',
+  'Investing': 'bg-blue-100 text-blue-800',
+  'Trading': 'bg-purple-100 text-purple-800',
+  'Analysis': 'bg-indigo-100 text-indigo-800',
+  'Basics': 'bg-green-100 text-green-800',
 };
 
 const GuidePreview = ({ initialPosts }: { initialPosts: Post[] }) => {
@@ -68,7 +68,14 @@ const GuidePreview = ({ initialPosts }: { initialPosts: Post[] }) => {
                     return (
                         <article key={post.slug} className="flex flex-col items-start self-start">
                             <div className="relative w-full">
-                            <div className="aspect-[16/9] w-full rounded-2xl bg-gray-100 dark:bg-gray-800 sm:aspect-[2/1] lg:aspect-[3/2]"></div>
+                            <Link href={`/guides/${post.slug}`}>
+                                <img
+                                    src={`/api/og/guide/${post.slug}`}
+                                    alt={post.title}
+                                    className="aspect-[4/3] w-full rounded-2xl object-cover"
+                                    loading="lazy"
+                                />
+                            </Link>
                             </div>
                             <div className="max-w-xl">
                             <div className="mt-8 flex items-center gap-x-4 text-sm">

@@ -10,9 +10,38 @@ import {
   ClockIcon
 } from '@heroicons/react/24/outline';
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://howtoinvestinnifty50.com';
+const pageUrl = `${baseUrl}/about/editorial-guidelines`;
+
 export const metadata: Metadata = {
   title: 'Editorial Guidelines - Our Content Standards',
-  description: 'Learn about our editorial standards, content creation process, and commitment to accuracy and transparency.',
+  description: 'Learn about our editorial standards, content creation process, and commitment to accuracy. Discover how we ensure quality in Nifty 50 guides and reviews.',
+  alternates: {
+    canonical: pageUrl,
+    languages: {
+      'en-IN': pageUrl,
+      'x-default': pageUrl,
+    },
+  },
+  openGraph: {
+    title: 'Editorial Guidelines - Our Content Standards',
+    description: 'Learn about our editorial standards, content creation process, and commitment to accuracy. Discover how we ensure quality in Nifty 50 guides and reviews.',
+    url: pageUrl,
+    siteName: 'How to Invest in NIFTY 50',
+    locale: 'en_IN',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Editorial Guidelines - Our Content Standards',
+    description: 'Learn about our editorial standards, content creation process, and commitment to accuracy. Discover how we ensure quality in Nifty 50 guides and reviews.',
+  },
+  other: {
+    'geo.region': 'IN',
+    'geo.placename': 'India',
+    'geo.position': '20.5937;78.9629',
+    'ICBM': '20.5937, 78.9629',
+  },
 };
 
 export default function EditorialGuidelinesPage() {
@@ -47,7 +76,7 @@ export default function EditorialGuidelinesPage() {
             <section className="mb-16">
               <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white mb-6">Our Editorial Mission</h2>
               <p className="text-lg leading-8 text-gray-600 dark:text-brand-silver mb-4">
-                At Nifty 50 Investing, we are committed to providing clear, accurate, and unbiased educational content about India's stock market. Our editorial guidelines ensure that every piece of content we publish meets our high standards for accuracy, transparency, and educational value.
+                At How to Invest in NIFTY 50, we are committed to providing clear, accurate, and unbiased educational content about India's stock market. Our editorial guidelines ensure that every piece of content we publish meets our high standards for accuracy, transparency, and educational value.
               </p>
               <p className="text-lg leading-8 text-gray-600 dark:text-brand-silver">
                 These guidelines govern how we research, write, edit, and publish content. They reflect our commitment to editorial independence, factual accuracy, and serving our readers' best interests.
@@ -258,7 +287,7 @@ export default function EditorialGuidelinesPage() {
                 <li>Thank readers who bring errors to our attention</li>
               </ul>
               <p className="text-lg leading-8 text-gray-600 dark:text-brand-silver">
-                If you notice an error in our content, please contact us at <a href="mailto:editorial@nifty50investing.com" className="text-brand-saffron hover:text-brand-saffron-hover hover:underline">editorial@nifty50investing.com</a>.
+                If you notice an error in our content, please contact us at <a href="mailto:info@howtoinvestinnifty50.com" className="text-brand-saffron hover:text-brand-saffron-hover hover:underline">info@howtoinvestinnifty50.com</a>.
               </p>
             </section>
 

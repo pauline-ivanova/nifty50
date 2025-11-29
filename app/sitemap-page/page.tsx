@@ -12,12 +12,41 @@ import {
   ArrowRightIcon,
 } from '@heroicons/react/24/outline';
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://howtoinvestinnifty50.com';
+const pageUrl = `${baseUrl}/sitemap-page`;
+
 export const metadata: Metadata = {
-  title: 'Sitemap - Nifty 50 Investing',
-  description: 'Complete site structure and navigation guide for Nifty 50 Investing.',
+  title: 'Sitemap - How to Invest in NIFTY 50',
+  description: 'Complete site structure and navigation guide for How to Invest in NIFTY 50. Find all guides, broker reviews, and resources.',
+  alternates: {
+    canonical: pageUrl,
+    languages: {
+      'en-IN': pageUrl,
+      'x-default': pageUrl,
+    },
+  },
+  openGraph: {
+    title: 'Sitemap - How to Invest in NIFTY 50',
+    description: 'Complete site structure and navigation guide for How to Invest in NIFTY 50. Find all guides, broker reviews, and resources.',
+    url: pageUrl,
+    siteName: 'How to Invest in NIFTY 50',
+    locale: 'en_IN',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Sitemap - How to Invest in NIFTY 50',
+    description: 'Complete site structure and navigation guide for How to Invest in NIFTY 50. Find all guides, broker reviews, and resources.',
+  },
   robots: {
     index: true,
     follow: true,
+  },
+  other: {
+    'geo.region': 'IN',
+    'geo.placename': 'India',
+    'geo.position': '20.5937;78.9629',
+    'ICBM': '20.5937, 78.9629',
   },
 };
 

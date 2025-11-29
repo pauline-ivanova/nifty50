@@ -139,7 +139,7 @@ export default function Header() {
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5 text-white font-bold text-xl flex items-center gap-2">
             <ChartBarIcon className="h-8 w-8 text-brand-saffron" />
-            <span>Nifty 50 Investing</span>
+            <span>How to Invest in NIFTY 50</span>
           </Link>
         </div>
         <div className="flex lg:hidden">

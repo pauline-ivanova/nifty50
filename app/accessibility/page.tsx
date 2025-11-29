@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { truncateText } from '@/lib/metadata-utils';
 import { 
   Cog6ToothIcon,
   CheckCircleIcon,
@@ -8,9 +9,40 @@ import {
   EnvelopeIcon
 } from '@heroicons/react/24/outline';
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://howtoinvestinnifty50.com';
+const pageUrl = `${baseUrl}/accessibility`;
+
+const baseDescription = 'Learn about our commitment to making our website accessible to all users, including those with disabilities. Discover how we ensure equal access to Nifty 50 resources.';
+
 export const metadata: Metadata = {
   title: 'Accessibility Statement - Our Commitment to Accessibility',
-  description: 'Learn about our commitment to making our website accessible to all users, including those with disabilities.',
+  description: truncateText(baseDescription, 155),
+  alternates: {
+    canonical: pageUrl,
+    languages: {
+      'en-IN': pageUrl,
+      'x-default': pageUrl,
+    },
+  },
+  openGraph: {
+    title: 'Accessibility Statement - Our Commitment to Accessibility',
+    description: truncateText(baseDescription, 155),
+    url: pageUrl,
+    siteName: 'How to Invest in NIFTY 50',
+    locale: 'en_IN',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Accessibility Statement - Our Commitment to Accessibility',
+    description: truncateText(baseDescription, 155),
+  },
+  other: {
+    'geo.region': 'IN',
+    'geo.placename': 'India',
+    'geo.position': '20.5937;78.9629',
+    'ICBM': '20.5937, 78.9629',
+  },
 };
 
 export default function AccessibilityPage() {
@@ -45,7 +77,7 @@ export default function AccessibilityPage() {
             <section className="mb-16">
               <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white mb-6">Our Commitment</h2>
               <p className="text-lg leading-8 text-gray-600 dark:text-brand-silver mb-4">
-                Nifty 50 Investing is committed to ensuring digital accessibility for people with disabilities. We are continually improving the user experience for everyone and applying the relevant accessibility standards to achieve these goals.
+                How to Invest in NIFTY 50 is committed to ensuring digital accessibility for people with disabilities. We are continually improving the user experience for everyone and applying the relevant accessibility standards to achieve these goals.
               </p>
               <p className="text-lg leading-8 text-gray-600 dark:text-brand-silver">
                 We aim to conform to the Web Content Accessibility Guidelines (WCAG) 2.1 level AA standards, which explain how to make web content more accessible for people with disabilities and user-friendly for everyone.
@@ -155,8 +187,8 @@ export default function AccessibilityPage() {
               <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700 mb-4">
                 <p className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Email:</p>
                 <p className="text-lg text-gray-600 dark:text-brand-silver mb-4">
-                  <a href="mailto:accessibility@nifty50investing.com" className="text-brand-saffron hover:text-brand-saffron-hover hover:underline">
-                    accessibility@nifty50investing.com
+                  <a href="mailto:info@howtoinvestinnifty50.com" className="text-brand-saffron hover:text-brand-saffron-hover hover:underline">
+                    info@howtoinvestinnifty50.com
                   </a>
                 </p>
                 <p className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Contact Page:</p>

@@ -32,9 +32,34 @@ import {
 } from '@heroicons/react/24/outline'
 
 
+import { generateStandardMetadata } from '@/lib/metadata-utils';
+
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://howtoinvestinnifty50.com';
+
+const standardMetadata = generateStandardMetadata({
+  title: 'Invest in Nifty 50: Complete Guide to India\'s Index',
+  description: 'Learn how to invest in Nifty 50 index funds, ETFs, and stocks. Compare top brokers, read guides, and start your journey.',
+  url: baseUrl,
+  pagePath: '/',
+});
+
 export const metadata: Metadata = {
-  title: 'Invest in Nifty 50: The Complete Guide to India\'s Stock Market Index',
-  description: 'Learn how to invest in Nifty 50 index funds, ETFs, and stocks. Compare top brokers, read guides, and start your journey.'
+  title: 'Invest in Nifty 50: Complete Guide to India\'s Index',
+  description: 'Learn how to invest in Nifty 50 index funds, ETFs, and stocks. Compare top brokers, read guides, and start your journey.',
+  ...standardMetadata,
+  openGraph: {
+    title: 'Invest in Nifty 50: Complete Guide to India\'s Index',
+    description: 'Learn how to invest in Nifty 50 index funds, ETFs, and stocks. Compare top brokers, read guides, and start your journey.',
+    url: baseUrl,
+    siteName: 'How to Invest in NIFTY 50',
+    locale: 'en_IN',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Invest in Nifty 50: Complete Guide to India\'s Index',
+    description: 'Learn how to invest in Nifty 50 index funds, ETFs, and stocks. Compare top brokers, read guides, and start your journey.',
+  },
 };
 
 export default async function Home() {

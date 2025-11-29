@@ -84,6 +84,8 @@ title: "${title.replace(/"/g, '\\"')}"
 slug: "${slug}"
 category: "${category}"
 description: "${description.replace(/"/g, '\\"').replace(/\n/g, ' ')}"
+datePublished: "${new Date().toISOString().split('T')[0]}"
+dateModified: "${new Date().toISOString().split('T')[0]}"
 ---
 
 `;

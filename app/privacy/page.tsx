@@ -9,9 +9,38 @@ import {
   EnvelopeIcon
 } from '@heroicons/react/24/outline';
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://howtoinvestinnifty50.com';
+const pageUrl = `${baseUrl}/privacy`;
+
 export const metadata: Metadata = {
   title: 'Privacy Policy - Your Data Protection Rights',
-  description: 'Learn how we collect, use, and protect your personal information. Our commitment to your privacy and data security.',
+  description: 'Learn how we collect, use, and protect your personal information. Our commitment to your privacy and data security when using our Nifty 50 resources.',
+  alternates: {
+    canonical: pageUrl,
+    languages: {
+      'en-IN': pageUrl,
+      'x-default': pageUrl,
+    },
+  },
+  openGraph: {
+    title: 'Privacy Policy - Your Data Protection Rights',
+    description: 'Learn how we collect, use, and protect your personal information. Our commitment to your privacy and data security when using our Nifty 50 resources.',
+    url: pageUrl,
+    siteName: 'How to Invest in NIFTY 50',
+    locale: 'en_IN',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Privacy Policy - Your Data Protection Rights',
+    description: 'Learn how we collect, use, and protect your personal information. Our commitment to your privacy and data security when using our Nifty 50 resources.',
+  },
+  other: {
+    'geo.region': 'IN',
+    'geo.placename': 'India',
+    'geo.position': '20.5937;78.9629',
+    'ICBM': '20.5937, 78.9629',
+  },
 };
 
 export default function PrivacyPolicyPage() {
@@ -46,7 +75,7 @@ export default function PrivacyPolicyPage() {
             <section className="mb-16">
               <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white mb-6">Introduction</h2>
               <p className="text-lg leading-8 text-gray-600 dark:text-brand-silver mb-4">
-                At Nifty 50 Investing, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website.
+                At How to Invest in NIFTY 50, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website.
               </p>
               <p className="text-lg leading-8 text-gray-600 dark:text-brand-silver">
                 By using our website, you consent to the data practices described in this policy. If you do not agree with the practices described in this policy, please do not use our website.
@@ -284,8 +313,8 @@ export default function PrivacyPolicyPage() {
               <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
                 <p className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Email:</p>
                 <p className="text-lg text-gray-600 dark:text-brand-silver mb-4">
-                  <a href="mailto:privacy@nifty50investing.com" className="text-brand-saffron hover:text-brand-saffron-hover hover:underline">
-                    privacy@nifty50investing.com
+                  <a href="mailto:info@howtoinvestinnifty50.com" className="text-brand-saffron hover:text-brand-saffron-hover hover:underline">
+                    info@howtoinvestinnifty50.com
                   </a>
                 </p>
                 <p className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Contact Page:</p>

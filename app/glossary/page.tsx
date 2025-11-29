@@ -4,9 +4,38 @@ import {
   BookOpenIcon
 } from '@heroicons/react/24/outline';
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://howtoinvestinnifty50.com';
+const pageUrl = `${baseUrl}/glossary`;
+
 export const metadata: Metadata = {
   title: 'Glossary - Financial Terms Explained',
-  description: 'A comprehensive glossary of financial and investment terms related to the Indian stock market.',
+  description: 'A comprehensive glossary of financial and investment terms related to the Indian stock market, Nifty 50, and investing. Learn key concepts for portfolios.',
+  alternates: {
+    canonical: pageUrl,
+    languages: {
+      'en-IN': pageUrl,
+      'x-default': pageUrl,
+    },
+  },
+  openGraph: {
+    title: 'Glossary - Financial Terms Explained',
+    description: 'A comprehensive glossary of financial and investment terms related to the Indian stock market, Nifty 50, and investing. Learn key concepts for portfolios.',
+    url: pageUrl,
+    siteName: 'How to Invest in NIFTY 50',
+    locale: 'en_IN',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Glossary - Financial Terms Explained',
+    description: 'A comprehensive glossary of financial and investment terms related to the Indian stock market, Nifty 50, and investing. Learn key concepts for portfolios.',
+  },
+  other: {
+    'geo.region': 'IN',
+    'geo.placename': 'India',
+    'geo.position': '20.5937;78.9629',
+    'ICBM': '20.5937, 78.9629',
+  },
 };
 
 const glossaryTerms = [
@@ -114,7 +143,7 @@ export default function GlossaryPage() {
           <div className="flex justify-center mb-6">
             <BookOpenIcon className="h-12 w-12 text-brand-silver" />
           </div>
-          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">Glossary</h1>
+          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">Nifty 50 Financial Terms Glossary</h1>
           <p className="mt-6 text-lg leading-8 text-brand-silver">
             A comprehensive guide to financial and investment terms related to the Indian stock market.
           </p>

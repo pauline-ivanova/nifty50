@@ -46,7 +46,7 @@ const TopicCardGrid: React.FC<TopicCardGridProps> = ({ services, title, descript
     : 'text-gray-900 dark:text-white';
   
   const cardTextClass = cardStyle === 'saffron'
-    ? 'text-white/90'
+    ? 'text-white'
     : 'text-gray-600 dark:text-gray-300';
   
   const iconBgClass = cardStyle === 'saffron'

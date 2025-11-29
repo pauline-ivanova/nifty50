@@ -8,9 +8,38 @@ import {
   EnvelopeIcon
 } from '@heroicons/react/24/outline';
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://howtoinvestinnifty50.com';
+const pageUrl = `${baseUrl}/advertiser-disclosure`;
+
 export const metadata: Metadata = {
   title: 'Advertiser Disclosure - Transparency About Our Partnerships',
-  description: 'Learn about our advertising relationships, affiliate partnerships, and how they may affect the content you see.',
+  description: 'Learn about our advertising relationships, affiliate partnerships, and how they may affect content. Our commitment to transparency in Nifty 50 reviews.',
+  alternates: {
+    canonical: pageUrl,
+    languages: {
+      'en-IN': pageUrl,
+      'x-default': pageUrl,
+    },
+  },
+  openGraph: {
+    title: 'Advertiser Disclosure - Transparency About Our Partnerships',
+    description: 'Learn about our advertising relationships, affiliate partnerships, and how they may affect content. Our commitment to transparency in Nifty 50 reviews.',
+    url: pageUrl,
+    siteName: 'How to Invest in NIFTY 50',
+    locale: 'en_IN',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Advertiser Disclosure - Transparency About Our Partnerships',
+    description: 'Learn about our advertising relationships, affiliate partnerships, and how they may affect content. Our commitment to transparency in Nifty 50 reviews.',
+  },
+  other: {
+    'geo.region': 'IN',
+    'geo.placename': 'India',
+    'geo.position': '20.5937;78.9629',
+    'ICBM': '20.5937, 78.9629',
+  },
 };
 
 export default function AdvertiserDisclosurePage() {
@@ -45,7 +74,7 @@ export default function AdvertiserDisclosurePage() {
             <section className="mb-16">
               <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white mb-6">Our Commitment to Transparency</h2>
               <p className="text-lg leading-8 text-gray-600 dark:text-brand-silver mb-4">
-                At Nifty 50 Investing, we believe in transparency about our business relationships. This page explains our advertising and affiliate partnerships, how they work, and how they may affect the content you see on our website.
+                At How to Invest in NIFTY 50, we believe in transparency about our business relationships. This page explains our advertising and affiliate partnerships, how they work, and how they may affect the content you see on our website.
               </p>
               <p className="text-lg leading-8 text-gray-600 dark:text-brand-silver">
                 Our primary goal is to provide helpful, accurate, and unbiased educational content. We maintain strict separation between our editorial content and our commercial partnerships to ensure that our reviews and recommendations remain objective and independent.
@@ -191,8 +220,8 @@ export default function AdvertiserDisclosurePage() {
               <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
                 <p className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Contact us:</p>
                 <p className="text-lg text-gray-600 dark:text-brand-silver mb-4">
-                  <a href="mailto:advertising@nifty50investing.com" className="text-brand-saffron hover:text-brand-saffron-hover hover:underline">
-                    advertising@nifty50investing.com
+                  <a href="mailto:info@howtoinvestinnifty50.com" className="text-brand-saffron hover:text-brand-saffron-hover hover:underline">
+                    info@howtoinvestinnifty50.com
                   </a>
                 </p>
                 <p className="text-lg text-gray-600 dark:text-brand-silver">

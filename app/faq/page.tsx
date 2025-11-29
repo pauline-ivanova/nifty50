@@ -3,15 +3,44 @@ import Link from 'next/link';
 import FAQ from '@/app/components/blocks/FAQ';
 import { QuestionMarkCircleIcon } from '@heroicons/react/24/outline';
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://howtoinvestinnifty50.com';
+const pageUrl = `${baseUrl}/faq`;
+
 export const metadata: Metadata = {
   title: 'Frequently Asked Questions - FAQ',
-  description: 'Find answers to common questions about our website, content, reviews, and services.',
+  description: 'Find answers to common questions about our website, content, reviews, and services. Learn about Nifty 50 investing, broker selection, and our process.',
+  alternates: {
+    canonical: pageUrl,
+    languages: {
+      'en-IN': pageUrl,
+      'x-default': pageUrl,
+    },
+  },
+  openGraph: {
+    title: 'Frequently Asked Questions - FAQ',
+    description: 'Find answers to common questions about our website, content, reviews, and services. Learn about Nifty 50 investing, broker selection, and our process.',
+    url: pageUrl,
+    siteName: 'How to Invest in NIFTY 50',
+    locale: 'en_IN',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Frequently Asked Questions - FAQ',
+    description: 'Find answers to common questions about our website, content, reviews, and services. Learn about Nifty 50 investing, broker selection, and our process.',
+  },
+  other: {
+    'geo.region': 'IN',
+    'geo.placename': 'India',
+    'geo.position': '20.5937;78.9629',
+    'ICBM': '20.5937, 78.9629',
+  },
 };
 
 const faqs = [
   {
-    question: 'What is Nifty 50 Investing?',
-    answer: 'Nifty 50 Investing is an educational resource dedicated to helping people understand India\'s stock market, particularly the Nifty 50 index. We provide guides, broker reviews, comparisons, and educational content to help beginners and experienced investors make informed decisions.',
+    question: 'What is How to Invest in NIFTY 50?',
+    answer: 'How to Invest in NIFTY 50 is an educational resource dedicated to helping people understand India\'s stock market, particularly the Nifty 50 index. We provide guides, broker reviews, comparisons, and educational content to help beginners and experienced investors make informed decisions.',
     category: 'About Us'
   },
   {
@@ -66,12 +95,12 @@ const faqs = [
   },
   {
     question: 'How can I report an error or outdated information?',
-    answer: 'If you notice an error or outdated information, please contact us through our Contact page or email us at contact@nifty50investing.com. We appreciate feedback and will correct errors promptly. Please include the URL of the page and details about the issue.',
+    answer: 'If you notice an error or outdated information, please contact us through our Contact page or email us at info@howtoinvestinnifty50.com. We appreciate feedback and will correct errors promptly. Please include the URL of the page and details about the issue.',
     category: 'General'
   },
   {
     question: 'Can I use your content on my website?',
-    answer: 'Our content is protected by copyright. You may not reproduce, distribute, or transmit our content without our prior written permission. However, you may share links to our articles and quote brief excerpts for non-commercial, educational purposes, provided you attribute the content to Nifty 50 Investing and include a link to the original source.',
+      answer: 'Our content is protected by copyright. You may not reproduce, distribute, or transmit our content without our prior written permission. However, you may share links to our articles and quote brief excerpts for non-commercial, educational purposes, provided you attribute the content to How to Invest in NIFTY 50 and include a link to the original source.',
     category: 'General'
   },
   {
@@ -81,7 +110,7 @@ const faqs = [
   },
   {
     question: 'How can I contact you?',
-    answer: 'You can contact us through our Contact page, email us at contact@nifty50investing.com, or use the contact form on our website. We typically respond to inquiries within 1-2 business days.',
+    answer: 'You can contact us through our Contact page, email us at info@howtoinvestinnifty50.com, or use the contact form on our website. We typically respond to inquiries within 1-2 business days.',
     category: 'General'
   },
   {

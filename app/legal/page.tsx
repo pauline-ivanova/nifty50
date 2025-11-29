@@ -8,9 +8,38 @@ import {
   InformationCircleIcon,
 } from '@heroicons/react/24/outline';
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://howtoinvestinnifty50.com';
+const pageUrl = `${baseUrl}/legal`;
+
 export const metadata: Metadata = {
-  title: 'Legal & Policies - Nifty 50 Investing',
-  description: 'Central hub for our terms, privacy policy, disclaimer, accessibility statement, and other legal information.',
+  title: 'Legal & Policies - How to Invest in NIFTY 50',
+  description: 'Central hub for our terms, privacy policy, disclaimer, accessibility statement, and other legal information related to our Nifty 50 investment platform.',
+  alternates: {
+    canonical: pageUrl,
+    languages: {
+      'en-IN': pageUrl,
+      'x-default': pageUrl,
+    },
+  },
+  openGraph: {
+    title: 'Legal & Policies - How to Invest in NIFTY 50',
+    description: 'Central hub for our terms, privacy policy, disclaimer, accessibility statement, and other legal information related to our Nifty 50 investment platform.',
+    url: pageUrl,
+    siteName: 'How to Invest in NIFTY 50',
+    locale: 'en_IN',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Legal & Policies - How to Invest in NIFTY 50',
+    description: 'Central hub for our terms, privacy policy, disclaimer, accessibility statement, and other legal information related to our Nifty 50 investment platform.',
+  },
+  other: {
+    'geo.region': 'IN',
+    'geo.placename': 'India',
+    'geo.position': '20.5937;78.9629',
+    'ICBM': '20.5937, 78.9629',
+  },
 };
 
 export default function LegalHubPage() {

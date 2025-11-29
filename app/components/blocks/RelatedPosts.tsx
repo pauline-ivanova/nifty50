@@ -8,6 +8,10 @@ interface RelatedPostsProps {
 const categoryColors: { [key:string]: string } = {
   'SEO': 'bg-indigo-100 text-brand-primary',
   'PPC': 'bg-green-100 text-green-800',
+  'Investing': 'bg-blue-100 text-blue-800',
+  'Trading': 'bg-purple-100 text-purple-800',
+  'Analysis': 'bg-indigo-100 text-indigo-800',
+  'Basics': 'bg-green-100 text-green-800',
 };
 
 const RelatedPosts = ({ category }: RelatedPostsProps) => {
@@ -32,7 +36,14 @@ const RelatedPosts = ({ category }: RelatedPostsProps) => {
           {relatedPosts.map((post) => (
             <article key={post.slug} className="flex flex-col items-start self-start">
               <div className="relative w-full">
-                <div className="aspect-[16/9] w-full rounded-2xl bg-gray-100 dark:bg-gray-800 sm:aspect-[2/1] lg:aspect-[3/2]"></div>
+                <Link href={`/guides/${post.slug}`}>
+                  <img
+                    src={`/api/og/guide/${post.slug}`}
+                    alt={post.title}
+                    className="aspect-[4/3] w-full rounded-2xl object-cover"
+                    loading="lazy"
+                  />
+                </Link>
               </div>
               <div className="max-w-xl">
                   <div className="mt-8 flex items-center gap-x-4 text-sm">

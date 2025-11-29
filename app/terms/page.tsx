@@ -9,9 +9,38 @@ import {
   EnvelopeIcon
 } from '@heroicons/react/24/outline';
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://howtoinvestinnifty50.com';
+const pageUrl = `${baseUrl}/terms`;
+
 export const metadata: Metadata = {
   title: 'Terms & Conditions - Website Usage Terms',
-  description: 'Read our terms and conditions governing your use of our website, content, and services.',
+  description: 'Read our terms and conditions governing your use of our website, content, and services. Understand your rights and responsibilities for Nifty 50 resources.',
+  alternates: {
+    canonical: pageUrl,
+    languages: {
+      'en-IN': pageUrl,
+      'x-default': pageUrl,
+    },
+  },
+  openGraph: {
+    title: 'Terms & Conditions - Website Usage Terms',
+    description: 'Read our terms and conditions governing your use of our website, content, and services. Understand your rights and responsibilities for Nifty 50 resources.',
+    url: pageUrl,
+    siteName: 'How to Invest in NIFTY 50',
+    locale: 'en_IN',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Terms & Conditions - Website Usage Terms',
+    description: 'Read our terms and conditions governing your use of our website, content, and services. Understand your rights and responsibilities for Nifty 50 resources.',
+  },
+  other: {
+    'geo.region': 'IN',
+    'geo.placename': 'India',
+    'geo.position': '20.5937;78.9629',
+    'ICBM': '20.5937, 78.9629',
+  },
 };
 
 export default function TermsPage() {
@@ -52,7 +81,7 @@ export default function TermsPage() {
                 By accessing and using this website, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.
               </p>
               <p className="text-lg leading-8 text-gray-600 dark:text-brand-silver">
-                These Terms & Conditions ("Terms") govern your access to and use of the Nifty 50 Investing website, including all content, features, and services provided on or through the website.
+                These Terms & Conditions ("Terms") govern your access to and use of the How to Invest in NIFTY 50 website, including all content, features, and services provided on or through the website.
               </p>
             </section>
 
@@ -63,7 +92,7 @@ export default function TermsPage() {
                 Use License
               </h2>
               <p className="text-lg leading-8 text-gray-600 dark:text-brand-silver mb-4">
-                Permission is granted to temporarily access and use the materials on Nifty 50 Investing's website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:
+                Permission is granted to temporarily access and use the materials on How to Invest in NIFTY 50's website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:
               </p>
               <ul className="list-disc list-outside space-y-2 text-lg leading-8 text-gray-600 dark:text-brand-silver pl-6 mb-4">
                 <li>Modify or copy the materials</li>
@@ -118,7 +147,7 @@ export default function TermsPage() {
                 Limitation of Liability
               </h2>
               <p className="text-lg leading-8 text-gray-600 dark:text-brand-silver mb-4">
-                In no event shall Nifty 50 Investing, its owners, operators, authors, contributors, or affiliates be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on this website, even if we or an authorized representative has been notified orally or in writing of the possibility of such damage.
+                In no event shall How to Invest in NIFTY 50, its owners, operators, authors, contributors, or affiliates be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on this website, even if we or an authorized representative has been notified orally or in writing of the possibility of such damage.
               </p>
               <p className="text-lg leading-8 text-gray-600 dark:text-brand-silver mb-4">
                 This includes, but is not limited to:
@@ -160,7 +189,7 @@ export default function TermsPage() {
             <section className="mb-16">
               <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white mb-6">Intellectual Property</h2>
               <p className="text-lg leading-8 text-gray-600 dark:text-brand-silver mb-4">
-                The content on this website, including but not limited to text, graphics, logos, images, and software, is the property of Nifty 50 Investing or its content suppliers and is protected by copyright, trademark, and other intellectual property laws.
+                The content on this website, including but not limited to text, graphics, logos, images, and software, is the property of How to Invest in NIFTY 50 or its content suppliers and is protected by copyright, trademark, and other intellectual property laws.
               </p>
               <p className="text-lg leading-8 text-gray-600 dark:text-brand-silver mb-4">
                 You may not:
@@ -172,7 +201,7 @@ export default function TermsPage() {
                 <li>Use our content for commercial purposes without a license</li>
               </ul>
               <p className="text-lg leading-8 text-gray-600 dark:text-brand-silver">
-                You may share links to our articles and quote brief excerpts for non-commercial, educational purposes, provided you attribute the content to Nifty 50 Investing and include a link to the original source.
+                You may share links to our articles and quote brief excerpts for non-commercial, educational purposes, provided you attribute the content to How to Invest in NIFTY 50 and include a link to the original source.
               </p>
             </section>
 
@@ -262,7 +291,7 @@ export default function TermsPage() {
             <section className="mb-16">
               <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white mb-6">Entire Agreement</h2>
               <p className="text-lg leading-8 text-gray-600 dark:text-brand-silver">
-                These Terms & Conditions, together with our Privacy Policy and Financial Disclaimer, constitute the entire agreement between you and Nifty 50 Investing regarding your use of the website and supersede all prior agreements and understandings.
+                These Terms & Conditions, together with our Privacy Policy and Financial Disclaimer, constitute the entire agreement between you and How to Invest in NIFTY 50 regarding your use of the website and supersede all prior agreements and understandings.
               </p>
             </section>
 
@@ -278,8 +307,8 @@ export default function TermsPage() {
               <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
                 <p className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Email:</p>
                 <p className="text-lg text-gray-600 dark:text-brand-silver mb-4">
-                  <a href="mailto:legal@nifty50investing.com" className="text-brand-saffron hover:text-brand-saffron-hover hover:underline">
-                    legal@nifty50investing.com
+                  <a href="mailto:info@howtoinvestinnifty50.com" className="text-brand-saffron hover:text-brand-saffron-hover hover:underline">
+                    info@howtoinvestinnifty50.com
                   </a>
                 </p>
                 <p className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Contact Page:</p>

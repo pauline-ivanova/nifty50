@@ -2,9 +2,38 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { CurrencyDollarIcon, ShieldCheckIcon, XMarkIcon, CheckCircleIcon } from '@heroicons/react/24/outline';
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://howtoinvestinnifty50.com';
+const pageUrl = `${baseUrl}/about/how-we-make-money`;
+
 export const metadata: Metadata = {
   title: 'How We Make Money - Transparency & Disclosure',
-  description: 'Understand how our website earns revenue and why it does not influence the objectivity of our educational content.',
+  description: 'Understand how our website earns revenue and why it does not influence the objectivity of our educational content. Learn about our monetization approach.',
+  alternates: {
+    canonical: pageUrl,
+    languages: {
+      'en-IN': pageUrl,
+      'x-default': pageUrl,
+    },
+  },
+  openGraph: {
+    title: 'How We Make Money - Transparency & Disclosure',
+    description: 'Understand how our website earns revenue and why it does not influence the objectivity of our educational content. Learn about our monetization approach.',
+    url: pageUrl,
+    siteName: 'How to Invest in NIFTY 50',
+    locale: 'en_IN',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'How We Make Money - Transparency & Disclosure',
+    description: 'Understand how our website earns revenue and why it does not influence the objectivity of our educational content. Learn about our monetization approach.',
+  },
+  other: {
+    'geo.region': 'IN',
+    'geo.placename': 'India',
+    'geo.position': '20.5937;78.9629',
+    'ICBM': '20.5937, 78.9629',
+  },
 };
 
 export default function HowWeMakeMoneyPage() {

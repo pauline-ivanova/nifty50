@@ -17,9 +17,38 @@ import {
   ExclamationTriangleIcon
 } from '@heroicons/react/24/outline';
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://howtoinvestinnifty50.com';
+const pageUrl = `${baseUrl}/about/review-methodology`;
+
 export const metadata: Metadata = {
   title: 'Our Review Methodology - How We Evaluate Brokers',
   description: 'Learn how we evaluate trading apps and brokers using publicly available data, platform analysis and transparent comparison criteria.',
+  alternates: {
+    canonical: pageUrl,
+    languages: {
+      'en-IN': pageUrl,
+      'x-default': pageUrl,
+    },
+  },
+  openGraph: {
+    title: 'Our Review Methodology - How We Evaluate Brokers',
+    description: 'Learn how we evaluate trading apps and brokers using publicly available data, platform analysis and transparent comparison criteria.',
+    url: pageUrl,
+    siteName: 'How to Invest in NIFTY 50',
+    locale: 'en_IN',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Our Review Methodology - How We Evaluate Brokers',
+    description: 'Learn how we evaluate trading apps and brokers using publicly available data, platform analysis and transparent comparison criteria.',
+  },
+  other: {
+    'geo.region': 'IN',
+    'geo.placename': 'India',
+    'geo.position': '20.5937;78.9629',
+    'ICBM': '20.5937, 78.9629',
+  },
 };
 
 export default function ReviewMethodologyPage() {

@@ -15,9 +15,38 @@ import {
   EnvelopeIcon
 } from '@heroicons/react/24/outline';
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://howtoinvestinnifty50.com';
+const pageUrl = `${baseUrl}/about`;
+
 export const metadata: Metadata = {
-  title: 'About Us - Nifty 50 Investing Guide',
-  description: 'Learn why we built this resource, what we focus on and how we aim to simplify market concepts for beginners.',
+  title: 'About Us - How to Invest in NIFTY 50',
+  description: 'Learn why we built this resource, what we focus on and how we aim to simplify market concepts for beginners. Discover our mission for Nifty 50 investing.',
+  alternates: {
+    canonical: pageUrl,
+    languages: {
+      'en-IN': pageUrl,
+      'x-default': pageUrl,
+    },
+  },
+  openGraph: {
+    title: 'About Us - How to Invest in NIFTY 50',
+    description: 'Learn why we built this resource, what we focus on and how we aim to simplify market concepts for beginners. Discover our mission for Nifty 50 investing.',
+    url: pageUrl,
+    siteName: 'How to Invest in NIFTY 50',
+    locale: 'en_IN',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'About Us - How to Invest in NIFTY 50',
+    description: 'Learn why we built this resource, what we focus on and how we aim to simplify market concepts for beginners. Discover our mission for Nifty 50 investing.',
+  },
+  other: {
+    'geo.region': 'IN',
+    'geo.placename': 'India',
+    'geo.position': '20.5937;78.9629',
+    'ICBM': '20.5937, 78.9629',
+  },
 };
 
 export default function AboutUsPage() {
@@ -30,7 +59,7 @@ export default function AboutUsPage() {
           <div className="flex justify-center mb-6">
             <InformationCircleIcon className="h-12 w-12 text-brand-silver" />
           </div>
-          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">About Us</h1>
+          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">About Us - Nifty 50 Investment Guide</h1>
           <p className="mt-6 text-lg leading-8 text-brand-silver">
             We're here to help you understand India's stock market and make informed investment decisions with confidence.
           </p>
@@ -396,7 +425,7 @@ export default function AboutUsPage() {
                       Email
                     </h3>
                     <p className="text-lg text-gray-600 dark:text-brand-silver ml-9">
-                      Send us an email at <a href="mailto:contact@nifty50investing.com" className="text-brand-saffron hover:text-brand-saffron-hover hover:underline">contact@nifty50investing.com</a>
+                      Send us an email at <a href="mailto:info@howtoinvestinnifty50.com" className="text-brand-saffron hover:text-brand-saffron-hover hover:underline">info@howtoinvestinnifty50.com</a>
                     </p>
                   </div>
                   

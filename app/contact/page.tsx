@@ -1,6 +1,10 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import ContactUs from '@/app/components/blocks/ContactUs';
+import JsonLd, { 
+  generateWebPageSchema,
+  generateBreadcrumbSchema,
+} from '@/app/components/common/JsonLd';
 import { 
   EnvelopeIcon,
   InformationCircleIcon,
@@ -8,14 +12,71 @@ import {
   MapPinIcon
 } from '@heroicons/react/24/outline';
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://howtoinvestinnifty50.com';
+const pageUrl = `${baseUrl}/contact`;
+
 export const metadata: Metadata = {
-  title: 'Contact Us - Get in Touch',
-  description: 'Have questions or feedback? Contact us and we\'ll get back to you as soon as possible.',
+  title: 'Contact Us - Get in Touch | How to Invest in NIFTY 50',
+  description: 'Have questions or feedback about Nifty 50 investing, broker reviews, or our guides? Contact us and we\'ll get back to you as soon as possible.',
+  alternates: {
+    canonical: pageUrl,
+    languages: {
+      'en-IN': pageUrl,
+      'x-default': pageUrl,
+    },
+  },
+  openGraph: {
+    title: 'Contact Us - Get in Touch',
+    description: 'Have questions or feedback? Contact us and we\'ll get back to you as soon as possible.',
+    url: pageUrl,
+    siteName: 'How to Invest in NIFTY 50',
+    locale: 'en_IN',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'Contact Us - Get in Touch',
+    description: 'Have questions or feedback? Contact us and we\'ll get back to you as soon as possible.',
+  },
+  other: {
+    'geo.region': 'IN',
+    'geo.placename': 'India',
+    'geo.position': '20.5937;78.9629',
+    'ICBM': '20.5937, 78.9629',
+  },
 };
 
 export default function ContactPage() {
+  const pageUrl = `${baseUrl}/contact`;
+
+  // Generate schemas
+  const schemas = [];
+
+  // Breadcrumb schema
+  const breadcrumbItems = [
+    { name: 'Home', url: baseUrl },
+    { name: 'Contact', url: pageUrl },
+  ];
+  schemas.push(generateBreadcrumbSchema(breadcrumbItems));
+
+  // WebPage schema
+  schemas.push(generateWebPageSchema({
+    name: 'Contact Us',
+    description: 'Have questions or feedback? Contact us and we\'ll get back to you as soon as possible.',
+    url: pageUrl,
+    isPartOf: {
+      '@type': 'WebSite',
+      name: 'How to Invest in NIFTY 50',
+      url: baseUrl,
+    },
+    breadcrumb: breadcrumbItems,
+  }));
+
   return (
     <>
+      {schemas.map((schema, index) => (
+        <JsonLd key={index} data={schema} />
+      ))}
       {/* Hero Section */}
       <div className="relative isolate bg-gradient-to-b from-brand-primary to-brand-secondary py-24 sm:py-32">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(30,27,75,0.4),transparent_50%)]" />
@@ -51,8 +112,8 @@ export default function ContactPage() {
                         For general inquiries, questions, or feedback:
                       </p>
                       <p className="text-lg">
-                        <a href="mailto:contact@nifty50investing.com" className="text-brand-saffron hover:text-brand-saffron-hover hover:underline">
-                          contact@nifty50investing.com
+                        <a href="mailto:info@howtoinvestinnifty50.com" className="text-brand-saffron hover:text-brand-saffron-hover hover:underline">
+                          info@howtoinvestinnifty50.com
                         </a>
                       </p>
                     </div>

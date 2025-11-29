@@ -73,7 +73,7 @@ const BrokerCarousel: React.FC<BrokerCarouselProps> = ({
     : 'text-gray-900 dark:text-white';
 
   const cardTextClass = cardStyle === 'saffron'
-    ? 'text-white/90'
+    ? 'text-white'
     : 'text-gray-600 dark:text-gray-300';
 
   const iconBgClass = cardStyle === 'saffron'
@@ -348,14 +348,20 @@ const BrokerCarousel: React.FC<BrokerCarouselProps> = ({
               <button
                 key={index}
                 onClick={() => scrollToIndex(index, true)}
-                className={`h-2 rounded-full transition-all duration-300 ${
+                className={`h-6 w-6 rounded-full transition-all duration-300 flex items-center justify-center ${
                   index === activeIndex
-                    ? 'bg-brand-saffron w-8'
-                    : 'bg-gray-300 dark:bg-gray-600 w-2 hover:bg-gray-400 dark:hover:bg-gray-500'
+                    ? 'bg-brand-saffron'
+                    : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'
                 }`}
                 aria-label={`Go to card ${index + 1}`}
                 aria-current={index === activeIndex ? 'true' : 'false'}
-              />
+              >
+                <span className={`h-2 w-2 rounded-full ${
+                  index === activeIndex
+                    ? 'bg-white'
+                    : 'bg-gray-500 dark:bg-gray-400'
+                }`} />
+              </button>
             ))}
           </div>
         </div>

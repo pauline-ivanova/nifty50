@@ -103,7 +103,7 @@ export default function Footer() {
           <div className="space-y-8">
             <Link href="/" className="flex items-center gap-2">
               <ChartBarIcon className="h-8 w-8 text-brand-saffron" />
-              <span className="text-white font-bold text-xl">Nifty 50 Investing</span>
+              <span className="text-white font-bold text-xl">How to Invest in NIFTY 50</span>
             </Link>
             <p className="text-sm leading-6 text-gray-300">
               Your trusted guide to the Indian stock market. We provide comprehensive analysis, broker reviews, and investment guides to help you make informed decisions.
@@ -250,7 +250,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24">
-          <p className="text-xs leading-5 text-gray-400">&copy; {new Date().getFullYear()} Nifty 50 Investing. All rights reserved.</p>
+          <p className="text-xs leading-5 text-gray-400">&copy; {new Date().getFullYear()} How to Invest in NIFTY 50. All rights reserved.</p>
         </div>
       </div>
     </footer>
