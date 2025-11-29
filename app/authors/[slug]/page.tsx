@@ -20,7 +20,12 @@ type Props = {
 };
 
 export async function generateStaticParams() {
-  return getAllAuthorSlugs();
+  try {
+    return getAllAuthorSlugs();
+  } catch (error) {
+    console.error('Error generating static params for authors:', error);
+    return [];
+  }
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

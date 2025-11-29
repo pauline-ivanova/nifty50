@@ -110,8 +110,13 @@ export default function GuidesPage() {
       </div>
       <div className="bg-white py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-            {allGuides.map((guide) => {
+          {allGuides.length === 0 ? (
+            <div className="text-center py-12">
+              <p className="text-lg text-gray-600">No guides available at the moment. Check back soon!</p>
+            </div>
+          ) : (
+            <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+              {allGuides.map((guide) => {
               const colorClasses = categoryColors[guide.category] || 'bg-gray-100 text-gray-800';
               return (
                 <article key={guide.slug} className="flex flex-col items-start self-start">
@@ -143,8 +148,9 @@ export default function GuidesPage() {
                   </div>
                 </article>
               );
-            })}
-          </div>
+              })}
+            </div>
+          )}
         </div>
       </div>
     </>

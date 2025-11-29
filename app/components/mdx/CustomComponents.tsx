@@ -32,16 +32,17 @@ const isTaskList = (children: React.ReactNode): boolean => {
     // Check if it's a React element
     if (React.isValidElement(node)) {
       // Check if it's an input with type checkbox
-      if (node.type === 'input' && node.props?.type === 'checkbox') {
+      const element = node as React.ReactElement<any>;
+      if (element.type === 'input' && element.props?.type === 'checkbox') {
         return true;
       }
       // Check if it's a string input element
-      if (typeof node.type === 'string' && node.type === 'input' && node.props?.type === 'checkbox') {
+      if (typeof element.type === 'string' && element.type === 'input' && element.props?.type === 'checkbox') {
         return true;
       }
       // Check children recursively
-      if (node.props?.children) {
-        const childrenArray = React.Children.toArray(node.props.children);
+      if (element.props?.children) {
+        const childrenArray = React.Children.toArray(element.props.children);
         return childrenArray.some(child => checkForCheckbox(child));
       }
     }
@@ -132,8 +133,11 @@ export function createMdxComponents(category: string = 'Basics', author?: Author
   // Helper to extract text from React node
   const extractText = (node: any): string => {
     if (typeof node === 'string') return node;
-    if (React.isValidElement(node) && node.props?.children) {
-      return React.Children.toArray(node.props.children).map(extractText).join('');
+    if (React.isValidElement(node)) {
+      const element = node as React.ReactElement<any>;
+      if (element.props?.children) {
+        return React.Children.toArray(element.props.children).map(extractText).join('');
+      }
     }
     if (Array.isArray(node)) {
       return node.map(extractText).join('');
@@ -267,9 +271,10 @@ export function createMdxComponents(category: string = 'Basics', author?: Author
     // Helper to check if an element is a checkbox
     const isCheckbox = (child: any) => {
       if (!React.isValidElement(child)) return false;
-      return (child.type === 'input' && child.props?.type === 'checkbox') ||
-             (typeof child.type === 'string' && child.type === 'input' && child.props?.type === 'checkbox') ||
-             (child.props?.type === 'checkbox');
+      const element = child as React.ReactElement<any>;
+      return (element.type === 'input' && element.props?.type === 'checkbox') ||
+             (typeof element.type === 'string' && element.type === 'input' && element.props?.type === 'checkbox') ||
+             (element.props?.type === 'checkbox');
     };
 
     let checkbox: any = null;
@@ -292,21 +297,24 @@ export function createMdxComponents(category: string = 'Basics', author?: Author
       if (wrapperIndex !== -1) {
         const wrapper = children[wrapperIndex];
         
-        if (wrapper.props && wrapper.props.children) {
-           const wrapperChildren = React.Children.toArray(wrapper.props.children);
-           const wrapperCheckboxIndex = wrapperChildren.findIndex(child => isCheckbox(child));
-           
-           if (wrapperCheckboxIndex !== -1) {
-             checkbox = wrapperChildren[wrapperCheckboxIndex];
-             // Unwrap the wrapper content minus checkbox
-             const wrapperRest = wrapperChildren.filter((_, i) => i !== wrapperCheckboxIndex);
+        if (React.isValidElement(wrapper)) {
+           const wrapperElement = wrapper as React.ReactElement<any>;
+           if (wrapperElement.props && wrapperElement.props.children) {
+             const wrapperChildren = React.Children.toArray(wrapperElement.props.children);
+             const wrapperCheckboxIndex = wrapperChildren.findIndex(child => isCheckbox(child));
              
-             // Replace the wrapper in the original children array with the unwrapped content
-             content = [
-               ...children.slice(0, wrapperIndex),
-               ...wrapperRest,
-               ...children.slice(wrapperIndex + 1)
-             ];
+             if (wrapperCheckboxIndex !== -1) {
+               checkbox = wrapperChildren[wrapperCheckboxIndex];
+               // Unwrap the wrapper content minus checkbox
+               const wrapperRest = wrapperChildren.filter((_, i) => i !== wrapperCheckboxIndex);
+               
+               // Replace the wrapper in the original children array with the unwrapped content
+               content = [
+                 ...children.slice(0, wrapperIndex),
+                 ...wrapperRest,
+                 ...children.slice(wrapperIndex + 1)
+               ];
+             }
            }
         }
       }
@@ -326,8 +334,11 @@ export function createMdxComponents(category: string = 'Basics', author?: Author
       // Generate unique ID for checkbox based on text content
       const extractTextForId = (node: any): string => {
         if (typeof node === 'string') return node;
-        if (React.isValidElement(node) && node.props?.children) {
-          return React.Children.toArray(node.props.children).map(extractTextForId).join('');
+        if (React.isValidElement(node)) {
+          const element = node as React.ReactElement<any>;
+          if (element.props?.children) {
+            return React.Children.toArray(element.props.children).map(extractTextForId).join('');
+          }
         }
         if (Array.isArray(node)) {
           return node.map(extractTextForId).join('');
@@ -340,7 +351,7 @@ export function createMdxComponents(category: string = 'Basics', author?: Author
       // Using content hash/slug is better.
       const checkboxId = `checklist-${textString || 'item'}`.replace(/-+/g, '-').replace(/^-|-$/g, '');
       
-      const defaultChecked = checkbox && React.isValidElement(checkbox) ? (checkbox.props?.checked || false) : false;
+      const defaultChecked = checkbox && React.isValidElement(checkbox) ? ((checkbox as React.ReactElement<any>).props?.checked || false) : false;
 
       return (
         <li className={`flex items-start gap-4 p-4 rounded-xl bg-white/80 backdrop-blur-sm border ${colors.border} ${colors.hoverBorder} ${colors.hoverBg} hover:shadow-md transition-all duration-200 group task-list-item checklist-item my-2`}>
@@ -382,13 +393,14 @@ export function createMdxComponents(category: string = 'Basics', author?: Author
     const extractText = (node: any): string => {
       if (typeof node === 'string') return node;
       if (React.isValidElement(node)) {
+        const element = node as React.ReactElement<any>;
         // Handle <p> tags and other wrappers
-        if (node.props?.children) {
-          return React.Children.toArray(node.props.children).map(extractText).join('');
+        if (element.props?.children) {
+          return React.Children.toArray(element.props.children).map(extractText).join('');
         }
         // If it's a text node wrapped in React element
-        if (node.props?.children === undefined && typeof node.props?.children !== 'object') {
-          return String(node.props?.children || '');
+        if (element.props?.children === undefined && typeof element.props?.children !== 'object') {
+          return String(element.props?.children || '');
         }
       }
       if (Array.isArray(node)) {
@@ -450,14 +462,15 @@ export function createMdxComponents(category: string = 'Basics', author?: Author
                     }
                     
                     if (React.isValidElement(children)) {
+                      const element = children as React.ReactElement<any>;
                       // Process all children recursively
-                      if (children.props && children.props.children !== undefined) {
-                        const processed = React.Children.map(children.props.children, (nested: any) => {
+                      if (element.props && element.props.children !== undefined) {
+                        const processed = React.Children.map(element.props.children, (nested: any) => {
                           return processChildrenRecursively(nested);
                         });
-                        return React.cloneElement(children as any, { children: processed });
+                        return React.cloneElement(element, { children: processed });
                       }
-                      return children;
+                      return element;
                     }
                     
                     if (Array.isArray(children)) {

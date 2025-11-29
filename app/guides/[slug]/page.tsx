@@ -259,10 +259,15 @@ export default function GuidePage({ params: { slug } }: { params: { slug: string
 }
 
 export async function generateStaticParams() {
-  const guides = getAllGuides();
-  return guides.map(guide => ({
-    slug: guide.slug,
-  }));
+  try {
+    const guides = getAllGuides();
+    return guides.map(guide => ({
+      slug: guide.slug,
+    }));
+  } catch (error) {
+    console.error('Error generating static params for guides:', error);
+    return [];
+  }
 }
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {

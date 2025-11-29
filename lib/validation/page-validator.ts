@@ -421,8 +421,8 @@ export async function validateAllPages(
 
   // Validate dynamic broker pages
   const brokerSlugs = getAllBrokerSlugs();
-  for (const slug of brokerSlugs) {
-    const result = await validateBrokerPage(slug, metadataRequirements, schemaRequirements);
+  for (const { params } of brokerSlugs) {
+    const result = await validateBrokerPage(params.slug, metadataRequirements, schemaRequirements);
     pages.push(result);
   }
 

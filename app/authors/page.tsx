@@ -98,8 +98,13 @@ export default function AuthorsPage() {
       {/* Authors Grid */}
       <div className="bg-white dark:bg-gray-900">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 py-16">
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {authors.map((author) => (
+          {authors.length === 0 ? (
+            <div className="text-center py-12">
+              <p className="text-lg text-gray-600 dark:text-gray-400">No authors available at the moment.</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {authors.map((author) => (
               <Link
                 key={author.slug}
                 href={`/authors/${author.slug}`}
@@ -161,8 +166,9 @@ export default function AuthorsPage() {
                   </div>
                 </div>
               </Link>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </>

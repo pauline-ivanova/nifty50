@@ -53,9 +53,13 @@ export function validateMetadataInPlace(metadata: Metadata): {
   const errors: string[] = [];
   const warnings: string[] = [];
 
-  const title = typeof metadata.title === 'string' 
-    ? metadata.title 
-    : metadata.title?.absolute || metadata.title?.default || '';
+  const titleVal = metadata.title;
+  let title = '';
+  if (typeof titleVal === 'string') {
+    title = titleVal;
+  } else if (titleVal && typeof titleVal === 'object') {
+    title = (titleVal as any).absolute || (titleVal as any).default || '';
+  }
 
   if (!title) {
     errors.push('Title is required');

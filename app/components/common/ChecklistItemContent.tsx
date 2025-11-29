@@ -12,11 +12,13 @@ export default function ChecklistItemContent({ children }: ChecklistItemContentP
   // Filter out checkbox inputs and InteractiveCheckbox components
   const filteredChildren = childrenArray.filter((child: any) => {
     if (React.isValidElement(child)) {
-      if (child.type === 'input' && child.props?.type === 'checkbox') {
+      const element = child as React.ReactElement<any>;
+      if (element.type === 'input' && element.props?.type === 'checkbox') {
         return false;
       }
-      if (child.type && typeof child.type !== 'string') {
-        const componentName = child.type.displayName || child.type.name || '';
+      if (element.type && typeof element.type !== 'string') {
+        const type = element.type as any;
+        const componentName = type.displayName || type.name || '';
         if (componentName.includes('InteractiveCheckbox')) {
           return false;
         }
