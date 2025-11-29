@@ -26,6 +26,15 @@ const Hero: React.FC<HeroProps> = ({
         <div className="text-left">
           <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl" style={{ textWrap: 'balance' }}>
             {(() => {
+              if (title === 'How to Invest in NIFTY 50') {
+                return (
+                  <>
+                    <span>How to Invest</span>
+                    <br />
+                    <span>in NIFTY 50</span>
+                  </>
+                );
+              }
               if (title === 'Invest in the Nifty 50 with Confidence') {
                 return (
                   <>

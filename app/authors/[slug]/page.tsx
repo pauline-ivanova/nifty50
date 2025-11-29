@@ -146,7 +146,7 @@ export default function AuthorPage({ params }: Props) {
       <div className="relative isolate bg-gradient-to-b from-brand-primary to-brand-secondary py-24 sm:py-32">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(30,27,75,0.4),transparent_50%)]" />
         <div className="relative mx-auto max-w-4xl px-6 lg:px-8">
-          <div className="flex items-start gap-6">
+          <div className="flex flex-col sm:flex-row items-start gap-6">
             {author.image ? (
               <img
                 src={author.image}
@@ -164,7 +164,7 @@ export default function AuthorPage({ params }: Props) {
                 </span>
               </div>
             )}
-            <div className="flex-1">
+            <div className="flex-1 w-full">
               <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
                 {author.name}
               </h1>

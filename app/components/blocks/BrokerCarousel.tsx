@@ -307,16 +307,28 @@ const BrokerCarousel: React.FC<BrokerCarouselProps> = ({
           >
             {infiniteBrokers.map((broker, index) => {
               const IconComponent = iconMap[broker.iconName || 'default'] || iconMap['default'];
+              // Only render H3 for the middle section (visible section) to avoid duplicates in document outline
+              const isMiddleSection = index >= brokers.length && index < brokers.length * 2;
+              
               return (
                 <div
                   key={`${broker.name}-${index}`}
                   className={`flex-shrink-0 w-[calc(100%-1.5rem)] sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] flex flex-col items-start justify-between rounded-2xl ${cardBgClass} p-8 shadow-lg transition-transform duration-300 hover:-translate-y-2`}
+                  role={!isMiddleSection ? 'presentation' : undefined}
                 >
                   <div className="relative flex items-center gap-x-4 w-full">
                     <div className={`flex h-12 w-12 flex-none items-center justify-center rounded-lg ${iconBgClass}`}>
                       <IconComponent className={`h-8 w-8 ${iconClass}`} aria-hidden="true" />
                     </div>
-                    <h3 className={`text-lg font-semibold leading-6 ${cardTitleClass} no-hyphen-break`}>{broker.name}</h3>
+                    {isMiddleSection ? (
+                      <h3 className={`text-lg font-semibold leading-6 ${cardTitleClass} no-hyphen-break`}>
+                        {broker.name}
+                      </h3>
+                    ) : (
+                      <div className={`text-lg font-semibold leading-6 ${cardTitleClass} no-hyphen-break`}>
+                        {broker.name}
+                      </div>
+                    )}
                   </div>
                 {broker.description && (
                   <p className={`mt-4 line-clamp-3 text-sm leading-6 ${cardTextClass}`}>

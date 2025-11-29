@@ -140,47 +140,47 @@ export default function GuidePage({ params: { slug } }: { params: { slug: string
           {/* Compact Author Info in Hero */}
           {(author || reviewer || guide.frontmatter.datePublished) && (
             <div className="mt-8 pt-8 border-t border-emerald-400/20">
-              <div className="flex flex-col items-center gap-3 text-sm text-emerald-100">
-                {author && (
-                  <div className="flex items-center gap-2">
-                    <span className="text-emerald-200">By</span>
-                    <Link
-                      href={`/authors/${author.slug}`}
-                      className="font-semibold text-white hover:text-emerald-200 underline transition-colors"
-                    >
-                      {author.name}
-                    </Link>
-                    {authorExpertise && (
-                      <>
-                        <span className="text-emerald-300/60">•</span>
-                        <span className="text-emerald-200/90 italic text-xs">
+              <div className="flex flex-col items-center gap-4 text-sm text-emerald-100">
+                <div className="flex flex-col md:flex-row w-full max-w-3xl mx-auto items-center justify-center gap-6 md:gap-12">
+                  {author && (
+                    <div className="flex flex-col items-center gap-1">
+                      <div className="flex items-center gap-2">
+                        <span className="text-emerald-200">By</span>
+                        <Link
+                          href={`/authors/${author.slug}`}
+                          className="font-semibold text-white hover:text-emerald-200 underline transition-colors"
+                        >
+                          {author.name}
+                        </Link>
+                      </div>
+                      {authorExpertise && (
+                        <span className="text-emerald-200/90 italic text-xs text-center">
                           Specializes in {authorExpertise.replace(/^["']|["']$/g, '')}
                         </span>
-                      </>
-                    )}
-                  </div>
-                )}
-                {reviewer && (
-                  <div className="flex items-center gap-2">
-                    <span className="text-emerald-200">Reviewed by</span>
-                    <Link
-                      href={`/authors/${reviewer.slug}`}
-                      className="font-semibold text-white hover:text-emerald-200 underline transition-colors"
-                    >
-                      {reviewer.name}
-                    </Link>
-                    {reviewerExpertise && (
-                      <>
-                        <span className="text-emerald-300/60">•</span>
-                        <span className="text-emerald-200/90 italic text-xs">
+                      )}
+                    </div>
+                  )}
+                  {reviewer && (
+                    <div className="flex flex-col items-center gap-1">
+                      <div className="flex items-center gap-2">
+                        <span className="text-emerald-200">Reviewed by</span>
+                        <Link
+                          href={`/authors/${reviewer.slug}`}
+                          className="font-semibold text-white hover:text-emerald-200 underline transition-colors"
+                        >
+                          {reviewer.name}
+                        </Link>
+                      </div>
+                      {reviewerExpertise && (
+                        <span className="text-emerald-200/90 italic text-xs text-center">
                           Specializes in {reviewerExpertise.replace(/^["']|["']$/g, '')}
                         </span>
-                      </>
-                    )}
-                  </div>
-                )}
+                      )}
+                    </div>
+                  )}
+                </div>
                 {guide.frontmatter.datePublished && (
-                  <div className="flex items-center gap-1.5">
+                  <div className="flex items-center justify-center gap-1.5 mt-2">
                     <ClockIcon className="h-4 w-4 text-emerald-200/80" />
                     <span className="text-emerald-200/80">
                       {new Date(guide.frontmatter.datePublished).toLocaleDateString('en-US', { 

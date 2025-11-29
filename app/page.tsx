@@ -150,8 +150,8 @@ export default async function Home() {
     <>
       <section id="hero">
         <Hero 
-          title="Invest in the Nifty 50 with Confidence"
-          subtitle="A clear, beginner-friendly guide to India’s most important stock index. Learn how Nifty 50 works, explore ETFs and index funds, and compare SEBI-regulated brokers."
+          title="How to Invest in NIFTY 50"
+          subtitle="A clear, beginner-friendly guide to India's most important stock index. Learn how Nifty 50 works, explore ETFs and index funds, and compare SEBI-regulated brokers."
           buttonText="Start Nifty 50 Guide"
           buttonLink={`/guides`}
           secondaryButtonText="Compare Brokers"
